@@ -88,7 +88,8 @@ const createForm = handleAsync(async (req, res) => {
 
 // GET controller for retrieving all form entries
 const getForms = handleAsync(async (req, res) => {
-  const forms = await Form.find();
+  const forms = await Form.find().sort({ createdAt: -1 });
+
   res.status(200).json({ success: true, count: forms.length, data: forms });
 });
 
