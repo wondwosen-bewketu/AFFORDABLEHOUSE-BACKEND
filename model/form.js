@@ -98,9 +98,9 @@ const formSchema = new mongoose.Schema(
       type: String,
       required: [true, "physicalStatus is required"],
     },
-    montheIncome: {
+    monthlyIncome: {
       type: String,
-      required: [true, "montheIncome is required"],
+      required: [true, "monthlyIncome is required"],
     },
     familySize: {
       type: String,

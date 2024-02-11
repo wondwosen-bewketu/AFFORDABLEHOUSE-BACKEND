@@ -15,7 +15,7 @@ connectToDatabase();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use("/profilePhoto", express.static(path.join(__dirname, "profilePhoto")));
+app.use(express.static(path.join(__dirname, "profilePhoto")));
 
 app.use("/", FormRoutes);
 
