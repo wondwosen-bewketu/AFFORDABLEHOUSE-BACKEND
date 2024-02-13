@@ -110,6 +110,10 @@ const formSchema = new mongoose.Schema(
       type: String,
       required: [true, "houseBefore is required"],
     },
+    referal: {
+      type: String,
+      required: [false, "Referal is required"],
+    },
   },
   {
     timestamps: true, // Automatically adds createdAt and updatedAt fields

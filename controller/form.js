@@ -5,20 +5,20 @@ const { handleAsync } = require("../utils/errorHandler");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'profilePhoto'); // Specify the destination folder where the uploaded files will be stored
+    cb(null, "profilePhoto"); // Specify the destination folder where the uploaded files will be stored
   },
   filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     const fileExtension = path.extname(file.originalname);
-    cb(null, file.fieldname + '-' + uniqueSuffix + fileExtension); // Set the file name to be unique
-  }
+    cb(null, file.fieldname + "-" + uniqueSuffix + fileExtension); // Set the file name to be unique
+  },
 });
 
 const upload = multer({ storage });
 
 // POST controller for creating a new form entry
 const createForm = [
-  upload.single('profilePhoto'), // Specify the field name used for the education file
+  upload.single("profilePhoto"), // Specify the field name used for the education file
   handleAsync(async (req, res) => {
     try {
       const {
@@ -46,6 +46,7 @@ const createForm = [
         monthlyIncome,
         familySize,
         houseBefore,
+        referal,
       } = req.body;
 
       // Verify data format
@@ -62,8 +63,6 @@ const createForm = [
 
       // Log received form data
       console.log("Received form data:", req.body);
-
-      
 
       // Create new form entry
       const newForm = new Form({
@@ -93,6 +92,7 @@ const createForm = [
         monthlyIncome,
         familySize,
         houseBefore,
+        referal,
       });
 
       // Save the form entry to the database
@@ -108,7 +108,7 @@ const createForm = [
       console.error("Error submitting form:", error.message);
       res.status(500).json({ error: "Error submitting form." });
     }
-  })
+  }),
 ];
 
 // GET controller for retrieving all form entries
