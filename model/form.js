@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const formSchema = new mongoose.Schema(
   {
     profilePhoto: {
-      type: String
+      type: String,
     },
     uniqueID: {
       type: String,
@@ -33,7 +33,7 @@ const formSchema = new mongoose.Schema(
       type: String,
       required: [true, "subCity is required"],
     },
-    
+
     district: {
       type: String,
       required: [true, "district is required"],
@@ -113,6 +113,7 @@ const formSchema = new mongoose.Schema(
     referal: {
       type: String,
       required: [false, "Referal is required"],
+      default: "--",
     },
   },
   {
